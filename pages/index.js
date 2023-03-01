@@ -13,7 +13,7 @@ export default function Home() {
     <Container>
       <Row>
         <Col>
-        <Button onClick={() => setIsNewItemModalOpen(true)}>Open</Button>
+          <Button onClick={() => setIsNewItemModalOpen(true)}>Open</Button>
         </Col>
       </Row>
       <NewItemModal open={isNewItemModalOpen} onClose={() => setIsNewItemModalOpen(false)} />
