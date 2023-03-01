@@ -16,12 +16,9 @@ const ProgramSchema = new Schema({
     type: String,
     required: true
   },
-  name: {
+  programName: {
     type: String,
     required: true
-  },
-  rewardType: {
-    type: String
   }
 }, { collection: 'programs' });
 
