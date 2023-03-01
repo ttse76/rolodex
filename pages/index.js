@@ -7,8 +7,20 @@ import Button from 'react-bootstrap/Button';
 
 import NewItemModal from 'components/elements/modals/NewItemModal';
 
+import { addNewLoyaltyProgram } from 'api/programs';
+
 export default function Home() {
   const [isNewItemModalOpen, setIsNewItemModalOpen] = useState(false);
+
+  const onSubmitForm = ({type, data}) => {
+    switch (type) {
+      case 'loyaltyprogram':
+        addNewLoyaltyProgram(data)
+          .then(() => setIsNewItemModalOpen(false));
+        break;
+    }
+  };
+
   return (
     <Container>
       <Row>
@@ -16,7 +28,10 @@ export default function Home() {
           <Button onClick={() => setIsNewItemModalOpen(true)}>Open</Button>
         </Col>
       </Row>
-      <NewItemModal open={isNewItemModalOpen} onClose={() => setIsNewItemModalOpen(false)} />
+      <NewItemModal
+        open={isNewItemModalOpen}
+        onClose={() => setIsNewItemModalOpen(false)}
+        onSubmit={onSubmitForm} />
     </Container>
   );
 }

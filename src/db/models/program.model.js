@@ -12,13 +12,18 @@ const ProgramSchema = new Schema({
       unique: true
     }
   },
-  memberId: {
-    type: String,
-    required: true
-  },
   programName: {
     type: String,
     required: true
+  },
+  company: {
+    type: String
+  },
+  programType: {
+    type: String
+  },
+  rewardType: {
+    type: String
   }
 }, { collection: 'programs' });
 

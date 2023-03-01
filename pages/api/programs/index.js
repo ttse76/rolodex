@@ -1,4 +1,4 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { newGuid } from "utils/guid";
 import dbConnect from "db/connect";
 import Program from "db/models/program.model";
 
@@ -15,8 +15,27 @@ export default async function handler(req, res) {
       } catch (err) {
         return res.status(400).send({ success: false });
       }
+    
+    case 'POST':
+      try {
+        const { body } = req;
+        const id = newGuid();
+        const newProgram = new Program({
+          id,
+          ...body
+        });
+
+        console.log(newProgram);
+
+        await newProgram.save();
+
+        return res.status(200).send({ success: true });
+      } catch (err) {
+        console.log(err);
+        return res.status(400).json({ success: false });
+      }
+
     default:
-      res.status(400).json({ success: false })
-      break
+      return res.status(400).json({ success: false });
   }
 }

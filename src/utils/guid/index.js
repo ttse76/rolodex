@@ -1,7 +1,5 @@
-import uuid from "uuid";
+import { v4 } from "uuid";
 
 export function newGuid() {
-  return uuid.v4();
+  return v4();
 }
-
-export const Empty = uuid.NIL;
